@@ -1,2 +1,2 @@
 # huffmann
-Huffmann coding software in C
+Huffmann coding software in C.
