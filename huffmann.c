@@ -27,6 +27,28 @@ struct Heap* createHeap(int capacity)
 	struct Heap* heap = (struct Heap*) malloc(sizeof(struct Heap));
 	heap->capacity = capacity;
 	heap->size = 0;
-	heap->array = calloc(heap->capacity, sizeof(struct Node*));
+	heap->array = (struct Node**) malloc(capacity * sizeof(struct Node*));
 	return heap;
-};
+}
+
+void printHeap(Heap *heap)
+{
+	printf("CAPACITY - %d\n", heap->capacity);
+	printf("SIZE - %d\n", heap->size);
+	printf("NODES - ");
+	if((heap->size)<=0) printf("none\n");
+	else
+	{
+		for(int i=0; i<(heap->size); i++)
+		{
+			printf("%s, ", ((heap->array)[i])->name);
+		}
+		printf("\n");
+	}
+}
+
+void addNodeToHeap(Node *node, Heap *heap)
+{
+	(heap->array)[heap->size] = node;
+	(heap->size)++;
+}

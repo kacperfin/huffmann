@@ -38,7 +38,12 @@ int main(int argc, char *argv[])
 		printf("You're in debug made. Write EXIT to quit the program.\n");
 
 		Node *node = createNode("", 0);
-		printNode(node);
+
+		Heap *heap = createHeap(5);
+		
+		addNodeToHeap(node, heap);
+		printHeap(heap);
+
 		while(true)
 		{
 			scanf("%s", a);

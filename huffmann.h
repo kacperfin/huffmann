@@ -18,12 +18,15 @@ typedef struct Heap
 {
 	int capacity;
 	int size;
-	struct Node *array[];
+	struct Node **array;
 } Heap;
 
 struct Node* createNode(char *name, int frequency);
 void printNode(Node *node);
 
 struct Heap* createHeap(int capacity);
+void printHeap(Heap *heap);
+
+void addNodeToHeap(Node *node, Heap *heap);
 
 #endif
