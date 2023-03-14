@@ -3,9 +3,14 @@
 #include <stdbool.h>
 #include <string.h>
 
+#include "huffmann.h"
+#include "ascii.h"
+
 int main(int argc, char *argv[])
 {
 	bool debug_mode;
+	char *a;
+	int ASCII[256];
 
 	if(argc<=1)
 	{
@@ -30,13 +35,21 @@ int main(int argc, char *argv[])
 
 	if(debug_mode==true)
 	{
-		;
+		printf("You're in debug mode. Write EXIT to quit the program.\n");
+		while(true)
+		{
+			scanf("%s", a);
+			if(strcmp(a, "EXIT")==0) return 0;
+
+			getFrequencies(ASCII, a);
+			printFrequencies(ASCII);
+		}	
 	}
 	else
 	{
-		if(argc<=3)
+		if(argc<=4)
 		{
-			printf("Nie podano pliku wejsciowego i wyjsciowego. Przyklad: ./a.out -f PLIK_WEJSCIOWY PLIK_WYJSCIOWY\n");
+			printf("Nie podano pliku wejsciowego i plikow wyjsciowych. Przyklad: ./a.out -f PLIK_WEJSCIOWY PLIK_WYJSCIOWY PLIK_TABLICA\n");
 			return -3;
 		}
 
@@ -50,6 +63,5 @@ int main(int argc, char *argv[])
 
 
 	}
-
 	return 0;
 }
