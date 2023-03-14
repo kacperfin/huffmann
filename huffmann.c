@@ -21,3 +21,12 @@ void printNode(Node *node)
 		printf("RIGHT - %s\n", (node->right)->name);
 	else printf("RIGHT - NULL\n");
 }
+
+struct Heap* createHeap(int capacity)
+{
+	struct Heap* heap = (struct Heap*) malloc(sizeof(struct Heap));
+	heap->capacity = capacity;
+	heap->size = 0;
+	heap->array = calloc(heap->capacity, sizeof(struct Node*));
+	return heap;
+};
