@@ -6,6 +6,15 @@
 #include <stdbool.h>
 #include <string.h>
 
-void helloWorld();
+typedef struct Node
+{
+	char *name;
+	int frequency;
+	struct Node *left;
+	struct Node *right;
+} Node;
+
+struct Node *createNode(char *name, int frequency);
+void printNode(Node *node);
 
 #endif

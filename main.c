@@ -35,7 +35,10 @@ int main(int argc, char *argv[])
 
 	if(debug_mode==true)
 	{
-		printf("You're in debug mode. Write EXIT to quit the program.\n");
+		printf("You're in debug made. Write EXIT to quit the program.\n");
+
+		Node *node = createNode("", 0);
+		printNode(node);
 		while(true)
 		{
 			scanf("%s", a);
