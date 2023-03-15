@@ -24,3 +24,14 @@ void printFrequencies(int tab[])
 		}
 	}
 }
+
+int getCapacity(int tab[])
+{
+	int capacity = 0;
+	for(int i=0; i<256; i++)
+	{
+		if(tab[i]!=0) capacity++;
+	}
+
+	return capacity;
+}

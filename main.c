@@ -9,8 +9,10 @@
 int main(int argc, char *argv[])
 {
 	bool debug_mode;
-	char *a;
+	char a[256];
 	int ASCII[256];
+	int capacity;
+	struct Heap *heap;
 
 	if(argc<=1)
 	{
@@ -35,23 +37,18 @@ int main(int argc, char *argv[])
 
 	if(debug_mode==true)
 	{
-		printf("You're in debug made. Write EXIT to quit the program.\n");
-
-		Node *node = createNode("", 0);
-
-		Heap *heap = createHeap(5);
-		
-		addNodeToHeap(node, heap);
-		printHeap(heap);
-
+		printf("You're in debug made. Write EXIT to quit the program.\n");		
 		while(true)
 		{
-			scanf("%s", a);
+			fgets(a, 256, stdin);
+			a[strlen(a) - 1] = '\0';
 			if(strcmp(a, "EXIT")==0) return 0;
 
 			getFrequencies(ASCII, a);
-			printFrequencies(ASCII);
-		}	
+			capacity = getCapacity(ASCII);
+			heap = createHeap(capacity);
+			printHeap(heap);
+		}
 	}
 	else
 	{
