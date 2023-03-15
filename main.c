@@ -48,7 +48,8 @@ int main(int argc, char *argv[])
 			capacity = getCapacity(ASCII);
 			heap = createHeap(capacity);
 			fillHeap(heap, ASCII);
-			sortHeap(heap);
+			createTree(heap);
+
 			printHeap(heap);
 
 		}

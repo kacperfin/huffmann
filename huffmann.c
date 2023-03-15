@@ -102,3 +102,12 @@ void combineTwoNodes(Heap *heap)
 		(heap->array)[i] = (heap->array)[i+1];
 	}
 }
+
+void createTree(Heap *heap)
+{
+	while(heap->size>1)
+	{
+		sortHeap(heap);
+		combineTwoNodes(heap);
+	}
+}
