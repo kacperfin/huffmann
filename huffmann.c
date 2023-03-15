@@ -69,6 +69,18 @@ void fillHeap(Heap *heap, int *array)
 	}
 }
 
+int compareNodes(const void *a, const void *b)
+{
+	struct Node * left = *(struct Node **) a;
+	struct Node * right = *(struct Node **) b;
+	return (left->frequency)-(right->frequency);
+}
+
+void sortHeap(Heap *heap)
+{
+	qsort(heap->array, heap->size, sizeof(struct Node*), compareNodes);
+}
+
 void combineTwoNodes(Heap *heap)
 {
 	Node *left = (heap->array)[0];
