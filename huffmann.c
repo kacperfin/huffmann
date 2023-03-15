@@ -3,7 +3,7 @@
 struct Node *createNode(char *name, int frequency)
 {
 	Node* node = (Node*) malloc(sizeof(Node));
-	node->name = name;
+	strcpy(node->name, name);
 	node->frequency = frequency;
 	node->left = NULL;
 	node->right = NULL;
@@ -51,4 +51,20 @@ void addNodeToHeap(Node *node, Heap *heap)
 {
 	(heap->array)[heap->size] = node;
 	(heap->size)++;
+}
+
+void fillHeap(Heap *heap, int *array)
+{
+	char a[256]="";
+	char c;
+	for(int i=0; i<256; i++)
+	{
+		if(array[i]!=0)
+		{
+			strcpy(a, "");
+			c=(char) i;
+			strncat(a, &c, 1);
+			addNodeToHeap(createNode(a, array[i]), heap);
+		}
+	}
 }

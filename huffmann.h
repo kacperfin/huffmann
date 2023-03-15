@@ -8,7 +8,7 @@
 
 typedef struct Node
 {
-	char *name;
+	char name[256];
 	int frequency;
 	struct Node *left;
 	struct Node *right;
@@ -28,5 +28,6 @@ struct Heap* createHeap(int capacity);
 void printHeap(Heap *heap);
 
 void addNodeToHeap(Node *node, Heap *heap);
+void fillHeap(Heap *heap, int *array);
 
 #endif

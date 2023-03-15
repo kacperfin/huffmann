@@ -47,6 +47,7 @@ int main(int argc, char *argv[])
 			getFrequencies(ASCII, a);
 			capacity = getCapacity(ASCII);
 			heap = createHeap(capacity);
+			fillHeap(heap, ASCII);
 			printHeap(heap);
 		}
 	}
