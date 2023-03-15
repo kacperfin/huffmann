@@ -68,3 +68,25 @@ void fillHeap(Heap *heap, int *array)
 		}
 	}
 }
+
+void combineTwoNodes(Heap *heap)
+{
+	Node *left = (heap->array)[0];
+	Node *right = (heap->array)[1];
+
+	char a[256] = "";
+	strcat(a, left->name);
+	strcat(a, right->name);
+
+	left = createNode(a, (left->frequency+right->frequency));
+	left->left = (heap->array)[0];
+	left->right = (heap->array)[1];
+	(heap->array)[0] = left;
+
+	heap->size--;
+
+	for(int i=1; i<heap->size; i++)
+	{
+		(heap->array)[i] = (heap->array)[i+1];
+	}
+}

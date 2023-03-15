@@ -49,6 +49,7 @@ int main(int argc, char *argv[])
 			heap = createHeap(capacity);
 			fillHeap(heap, ASCII);
 			printHeap(heap);
+
 		}
 	}
 	else

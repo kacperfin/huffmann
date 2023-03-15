@@ -29,5 +29,6 @@ void printHeap(Heap *heap);
 
 void addNodeToHeap(Node *node, Heap *heap);
 void fillHeap(Heap *heap, int *array);
+void combineTwoNodes(Heap *heap);
 
 #endif
