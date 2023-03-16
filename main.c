@@ -13,6 +13,8 @@ int main(int argc, char *argv[])
 	int ASCII[256];
 	int capacity;
 	struct Heap *heap;
+	char array[256];
+	int current=0;
 
 	if(argc<=1)
 	{
@@ -49,8 +51,8 @@ int main(int argc, char *argv[])
 			heap = createHeap(capacity);
 			fillHeap(heap, ASCII);
 			createTree(heap);
-
-			printHeap(heap);
+			
+			printTree((heap->array)[0], array, current);
 
 		}
 	}

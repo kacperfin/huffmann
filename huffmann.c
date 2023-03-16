@@ -1,4 +1,5 @@
 #include "huffmann.h"
+#include "ascii.h"
 
 struct Node *createNode(char *name, int frequency)
 {
@@ -109,5 +110,31 @@ void createTree(Heap *heap)
 	{
 		sortHeap(heap);
 		combineTwoNodes(heap);
+	}
+}
+
+bool isLeaf(Node *node)
+{
+	if(node->left==NULL&&node->right==NULL) return true;
+	return false;
+}
+
+void printTree(Node *node, char array[], int current)
+{
+	if(isLeaf(node)==true)
+	{
+		printf("%s - ", node->name);
+		printCharArray(array, current);
+		printf("\n");	
+	}
+	if(node->left!=NULL)
+	{
+		array[current] = '0';
+		printTree(node->left, array, current+1);
+	}
+	if(node->right!=NULL)
+	{
+		array[current] = '1';
+		printTree(node->right, array, current+1);
 	}
 }

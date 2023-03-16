@@ -33,6 +33,7 @@ void sortHeap(Heap *heap);
 void combineTwoNodes(Heap *heap);
 
 void createTree(Heap *heap);
-
+bool isLeaf(Node *node);
+void printTree(Node *node, char array[], int current);
 
 #endif

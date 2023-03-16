@@ -35,3 +35,8 @@ int getCapacity(int tab[])
 
 	return capacity;
 }
+
+void printCharArray(char array[], int n)
+{
+	for(int i=0; i<n; i++) printf("%c", array[i]);
+}

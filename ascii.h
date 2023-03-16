@@ -11,4 +11,6 @@ void getFrequencies(int tab[], char *message);
 void printFrequencies(int tab[]);
 int getCapacity(int tab[]);
 
+void printCharArray(char array[], int n);
+
 #endif
