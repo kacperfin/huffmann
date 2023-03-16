@@ -43,5 +43,8 @@ void printTree(Node *node, char array[], int current);
 void clearTable(CodingTable table[], int n);
 void saveCodesToTable(Node *node, char array[], int current, CodingTable table[]);
 void printTable(CodingTable table[], int n);
+void encodeChar(char c, CodingTable table[], int n, char string[]);
+void printEncodedChar(char c, CodingTable table[], int n);
+void printEncodedMessage(char a[], CodingTable table[], int n);
 
 #endif

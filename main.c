@@ -59,7 +59,10 @@ int main(int argc, char *argv[])
 			
 			clearTable(table, capacity);
 			saveCodesToTable((heap->array)[0], array, current, table);
+			
 			printTable(table, capacity);
+			printEncodedMessage(a, table, capacity);
+
 			counter = 0;
 		}
 	}
@@ -92,9 +95,15 @@ int main(int argc, char *argv[])
 		clearTable(table, capacity);
 		saveCodesToTable((heap->array)[0], array, current, table);
 		printTable(table, capacity);
+		
+		rewind(fr);
+		while((c=fgetc(fr))!=EOF)
+		{
+			printEncodedChar(c, table, capacity);
+		}
+		printf("\n");
 
 		fclose(fr);
-
 	}
 	return 0;
 }

@@ -188,3 +188,34 @@ void printTable(CodingTable table[], int n)
 		printf("\n");
 	}
 }
+
+void encodeChar(char c, CodingTable table[], int n, char string[])
+{
+	for(int i=0; i<n; i++)
+	{
+		if(c==table[i].symbol)
+		{
+			strcpy(string, table[i].code);
+			i = n;
+		}
+	}
+}
+
+void printEncodedChar(char c, CodingTable table[], int n)
+{
+	char string[256]="";
+	encodeChar(c, table, n, string);
+	printf("%s", string);
+}
+
+void printEncodedMessage(char a[], CodingTable table[], int n)
+{
+	char string[256]="";
+
+	for(int i=0; i<strlen(a); i++)
+	{
+		encodeChar(a[i], table, n, string);
+		printf("%s", string);
+	}
+	printf("\n");
+}
