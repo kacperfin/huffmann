@@ -138,3 +138,53 @@ void printTree(Node *node, char array[], int current)
 		printTree(node->right, array, current+1);
 	}
 }
+
+void clearTable(CodingTable table[], int n)
+{
+	for(int i=0; i<n; i++)
+	{
+		table[i].symbol = '\0';
+		strcpy(table[i].code, "");
+	}
+}
+
+void saveCodesToTable(Node *node, char array[], int current, CodingTable table[])
+{
+	if(isLeaf(node)==true)
+	{
+		table[counter].symbol = (node->name)[0];
+		for(int i=0; i<current; i++)
+		{
+			strncat(table[counter].code, &array[i], 1);
+		}
+		counter++;
+	}
+	if(node->left!=NULL)
+	{
+		array[current] = '0';
+		saveCodesToTable(node->left, array, current+1, table);
+	}
+	if(node->right!=NULL)
+	{
+		array[current] = '1';
+		saveCodesToTable(node->right, array, current+1, table);
+
+	}
+}
+
+void printTable(CodingTable table[], int n)
+{
+	for(int i=0; i<n; i++)
+	{
+		if(table[i].symbol!='\n')
+		{
+			printf("\'%c\'  -  ", table[i].symbol);
+		}
+		else printf("\'\\n\' -  ");
+		for(int j=0; j<strlen(table[i].code); j++)
+		{
+			printf("%c", (table[i].code)[j]);
+		}
+		printf("\n");
+	}
+}

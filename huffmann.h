@@ -6,6 +6,10 @@
 #include <stdbool.h>
 #include <string.h>
 
+#include "ascii.h"
+
+extern int counter;
+
 typedef struct Node
 {
 	char name[256];
@@ -35,5 +39,9 @@ void combineTwoNodes(Heap *heap);
 void createTree(Heap *heap);
 bool isLeaf(Node *node);
 void printTree(Node *node, char array[], int current);
+
+void clearTable(CodingTable table[], int n);
+void saveCodesToTable(Node *node, char array[], int current, CodingTable table[]);
+void printTable(CodingTable table[], int n);
 
 #endif

@@ -6,6 +6,12 @@
 #include <stdbool.h>
 #include <string.h>
 
+typedef struct CodingTable
+{
+	char symbol;
+	char code[256];
+} CodingTable;
+
 void clearArray(int array[], int n);
 //tab is expected do have 256 characters as its an ASCII array
 void getFrequencies(int tab[], char *message);

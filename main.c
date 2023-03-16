@@ -6,6 +6,8 @@
 #include "huffmann.h"
 #include "ascii.h"
 
+int counter=0;
+
 int main(int argc, char *argv[])
 {
 	bool debug_mode;
@@ -16,6 +18,7 @@ int main(int argc, char *argv[])
 	struct Heap *heap;
 	char array[256];
 	int current=0;
+	struct CodingTable table[256];
 
 	if(argc<=1)
 	{
@@ -54,8 +57,10 @@ int main(int argc, char *argv[])
 			fillHeap(heap, ASCII);
 			createTree(heap);
 			
-			printTree((heap->array)[0], array, current);
-
+			clearTable(table, capacity);
+			saveCodesToTable((heap->array)[0], array, current, table);
+			printTable(table, capacity);
+			counter = 0;
 		}
 	}
 	else
@@ -84,7 +89,9 @@ int main(int argc, char *argv[])
 		fillHeap(heap, ASCII);
 		createTree(heap);
 
-		printTree((heap->array)[0], array, current);
+		clearTable(table, capacity);
+		saveCodesToTable((heap->array)[0], array, current, table);
+		printTable(table, capacity);
 
 		fclose(fr);
 
