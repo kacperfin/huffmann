@@ -10,6 +10,7 @@ int main(int argc, char *argv[])
 {
 	bool debug_mode;
 	char a[256];
+	char c;
 	int ASCII[256];
 	int capacity;
 	struct Heap *heap;
@@ -45,7 +46,8 @@ int main(int argc, char *argv[])
 			fgets(a, 256, stdin);
 			a[strlen(a) - 1] = '\0';
 			if(strcmp(a, "EXIT")==0) return 0;
-
+			
+			clearArray(ASCII, 256);
 			getFrequencies(ASCII, a);
 			capacity = getCapacity(ASCII);
 			heap = createHeap(capacity);
@@ -64,14 +66,27 @@ int main(int argc, char *argv[])
 			return -3;
 		}
 
-		FILE *fp;
-		fp = fopen(argv[2], "r");
-		if(fp==NULL)
+		FILE *fr;
+		fr = fopen(argv[2], "rb");
+		if(fr==NULL)
 		{
 			printf("Blad przy otwieraniu pliku.\n");
 			return -4;
 		}
 
+		clearArray(ASCII, 256);
+		while((c = fgetc(fr))!=EOF)
+		{
+			getFrequency(ASCII, c);
+		}
+		capacity = getCapacity(ASCII);
+		heap = createHeap(capacity);
+		fillHeap(heap, ASCII);
+		createTree(heap);
+
+		printTree((heap->array)[0], array, current);
+
+		fclose(fr);
 
 	}
 	return 0;

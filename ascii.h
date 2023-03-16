@@ -6,8 +6,10 @@
 #include <stdbool.h>
 #include <string.h>
 
+void clearArray(int array[], int n);
 //tab is expected do have 256 characters as its an ASCII array
 void getFrequencies(int tab[], char *message);
+void getFrequency(int array[], char c);
 void printFrequencies(int tab[]);
 int getCapacity(int tab[]);
 
