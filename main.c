@@ -75,6 +75,8 @@ int main(int argc, char *argv[])
 		}
 
 		FILE *fr;
+		FILE *fw;
+
 		fr = fopen(argv[2], "rb");
 		if(fr==NULL)
 		{
@@ -97,11 +99,12 @@ int main(int argc, char *argv[])
 		printTable(table, capacity);
 		
 		rewind(fr);
+
 		while((c=fgetc(fr))!=EOF)
 		{
-			printEncodedChar(c, table, capacity);
+			//clearFile(fw, argv[3]);
+			writeEncodedCharToFile(c, table, capacity, fw, argv[3]);
 		}
-		printf("\n");
 
 		fclose(fr);
 	}

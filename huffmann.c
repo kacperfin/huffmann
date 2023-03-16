@@ -201,9 +201,29 @@ void encodeChar(char c, CodingTable table[], int n, char string[])
 	}
 }
 
+void clearFile(FILE *fw, char directory[])
+{
+	fw = fopen(directory, "wb");
+
+	fclose(fw);
+}
+
+void writeEncodedCharToFile(char c, CodingTable table[], int n, FILE *fw, char directory[])
+{
+	char string[256]="";
+
+	fw = fopen(directory, "a");
+
+	encodeChar(c, table, n, string);
+	fputs(string, fw);
+
+	fclose(fw);
+}
+
 void printEncodedChar(char c, CodingTable table[], int n)
 {
 	char string[256]="";
+
 	encodeChar(c, table, n, string);
 	printf("%s", string);
 }
