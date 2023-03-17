@@ -100,9 +100,9 @@ int main(int argc, char *argv[])
 		
 		rewind(fr);
 
+		clearFile(fw, argv[3]);
 		while((c=fgetc(fr))!=EOF)
 		{
-			//clearFile(fw, argv[3]);
 			writeEncodedCharToFile(c, table, capacity, fw, argv[3]);
 		}
 
