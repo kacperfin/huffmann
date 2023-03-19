@@ -90,7 +90,7 @@ int main(int argc, char *argv[])
 			fread(&c, sizeof(char), 1, fr);
 			getFrequency(ASCII, c);
 		}
-
+		ASCII[13]=0;
 		//printFrequencies(ASCII);
 		capacity = getCapacity(ASCII);
 		heap = createHeap(capacity);
