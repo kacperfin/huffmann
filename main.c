@@ -98,6 +98,7 @@ int main(int argc, char *argv[])
 		clearTable(table, capacity);
 		saveCodesToTable((heap->array)[0], array, current, table);
 		printTable(table, capacity);
+		writeTableToBinaryFile(table, capacity, fw, argv[4]);
 		
 		rewind(fr);
 

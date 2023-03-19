@@ -21,4 +21,6 @@ int getCapacity(int tab[]);
 
 void printCharArray(char array[], int n);
 
+void writeTableToBinaryFile(CodingTable table[], int n, FILE *fw, char directory[]);
+
 #endif
