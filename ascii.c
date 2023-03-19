@@ -50,10 +50,27 @@ void printCharArray(char array[], int n)
 void writeTableToBinaryFile(CodingTable table[], int n, FILE *fw, char directory[])
 {
 	fw = fopen(directory, "wb");
-
+	char string[256];
 	for(int i=0; i<n; i++)
 	{
-		fwrite(&table[i].symbol, sizeof(char), 1, fw);
+		strcpy(string, "\'");
+		fwrite(string, sizeof(char)*strlen(string), 1, fw);
+		if(table[i].symbol!='\n')
+		{
+			fwrite(&table[i].symbol, sizeof(char), 1, fw);
+			strcpy(string, "\'  -  ");
+			fwrite(string, sizeof(char)*strlen(string), 1, fw);
+		}
+		else
+		{
+			strcpy(string, "\\n\' -  ");
+			fwrite(string, sizeof(char)*strlen(string), 1, fw);
+		}
+
+		fwrite(table[i].code, sizeof(char)*strlen(table[i].code), 1, fw);
+
+		strcpy(string, "\n");
+		fwrite(string, sizeof(char)*strlen(string), 1, fw);
 	}
 
 	fclose(fw);
