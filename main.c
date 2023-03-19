@@ -85,8 +85,9 @@ int main(int argc, char *argv[])
 		}
 
 		clearArray(ASCII, 256);
-		while((c = fgetc(fr))!=EOF)
+		while(!feof(fr))
 		{
+			fread(&c, sizeof(char), 1, fr);
 			getFrequency(ASCII, c);
 		}
 		capacity = getCapacity(ASCII);
