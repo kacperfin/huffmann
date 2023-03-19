@@ -91,7 +91,7 @@ int main(int argc, char *argv[])
 			getFrequency(ASCII, c);
 		}
 
-		printFrequencies(ASCII);
+		//printFrequencies(ASCII);
 		capacity = getCapacity(ASCII);
 		heap = createHeap(capacity);
 		fillHeap(heap, ASCII);
