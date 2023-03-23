@@ -144,6 +144,7 @@ void clearTable(CodingTable table[], int n)
 	for(int i=0; i<n; i++)
 	{
 		table[i].symbol = '\0';
+		table[i].frequency = 0;
 		strcpy(table[i].code, "");
 	}
 }
@@ -153,6 +154,7 @@ void saveCodesToTable(Node *node, char array[], int current, CodingTable table[]
 	if(isLeaf(node)==true)
 	{
 		table[counter].symbol = (node->name)[0];
+		table[counter].frequency = node->frequency;
 		for(int i=0; i<current; i++)
 		{
 			strncat(table[counter].code, &array[i], 1);
@@ -176,6 +178,7 @@ void printTable(CodingTable table[], int n)
 {
 	for(int i=0; i<n; i++)
 	{
+		//printf("%d: ", table[i].frequency);
 		if(table[i].symbol!='\n')
 		{
 			printf("\'%c\'  -  ", table[i].symbol);

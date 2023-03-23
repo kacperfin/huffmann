@@ -10,6 +10,7 @@ typedef struct CodingTable
 {
 	char symbol;
 	char code[256];
+	int frequency;
 } CodingTable;
 
 void clearArray(int array[], int n);
@@ -22,5 +23,6 @@ int getCapacity(int tab[]);
 void printCharArray(char array[], int n);
 
 void writeTableToBinaryFile(CodingTable table[], int n, FILE *fw, char directory[]);
+void getByteCount(CodingTable table[], int n, int *bytes, int *leftoverBits);
 
 #endif

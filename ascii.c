@@ -75,3 +75,15 @@ void writeTableToBinaryFile(CodingTable table[], int n, FILE *fw, char directory
 
 	fclose(fw);
 }
+
+void getByteCount(CodingTable table[], int n, int *bytes, int *leftoverBits)
+{
+	int counter=0;
+	for(int i=0; i<n; i++)
+	{
+		counter += table[i].frequency * strlen(table[i].code);
+	}
+
+	*bytes = counter/8;
+	*leftoverBits = counter%8;
+}

@@ -19,6 +19,9 @@ int main(int argc, char *argv[])
 	char array[256];
 	int current=0;
 	struct CodingTable table[256];
+	int bytes;
+	int leftoverBits;
+
 
 	if(argc<=1)
 	{
@@ -63,6 +66,9 @@ int main(int argc, char *argv[])
 			printTable(table, capacity);
 			printEncodedMessage(a, table, capacity);
 
+			//getByteCount(table, capacity, &bytes, &leftoverBits);
+			//printf("%d, %d\n", bytes, leftoverBits);
+
 			counter = 0;
 		}
 	}
@@ -101,7 +107,9 @@ int main(int argc, char *argv[])
 		saveCodesToTable((heap->array)[0], array, current, table);
 		printTable(table, capacity);
 		writeTableToBinaryFile(table, capacity, fw, argv[4]);
-		
+		getByteCount(table, capacity, &bytes, &leftoverBits);
+		//printf("%d, %d\n", bytes, leftoverBits);
+
 		rewind(fr);
 
 		clearFile(fw, argv[3]);
